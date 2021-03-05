@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.busi.mapper.TWorkInfoMapper">
+  <resultMap id="BaseResultMap" type="cn.com.busi.domain.TWorkInfo">
+    <!--@mbg.generated-->
+    <!--@Table t_work_info-->
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="JobNo" jdbcType="VARCHAR" property="jobno" />
+    <result column="institution" jdbcType="VARCHAR" property="institution" />
+    <result column="Dept" jdbcType="VARCHAR" property="dept" />
+    <result column="superior" jdbcType="VARCHAR" property="superior" />
+    <result column="post" jdbcType="VARCHAR" property="post" />
+    <result column="function" jdbcType="VARCHAR" property="function" />
+    <result column="workplace" jdbcType="VARCHAR" property="workplace" />
+    <result column="account" jdbcType="VARCHAR" property="account" />
+    <result column="Password" jdbcType="VARCHAR" property="password" />
+    <result column="Rank" jdbcType="VARCHAR" property="rank" />
+    <result column="opflag" jdbcType="VARCHAR" property="opflag" />
+    <result column="opdate" jdbcType="TIMESTAMP" property="opdate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, JobNo, institution, Dept, superior, post, `function`, workplace, account, `Password`, 
+    `Rank`, opflag, opdate
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from t_work_info
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from t_work_info
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.com.busi.domain.TWorkInfo">
+    <!--@mbg.generated-->
+    insert into t_work_info (id, JobNo, institution, 
+      Dept, superior, post, 
+      `function`, workplace, account, 
+      `Password`, `Rank`, opflag, 
+      opdate)
+    values (#{id,jdbcType=VARCHAR}, #{jobno,jdbcType=VARCHAR}, #{institution,jdbcType=VARCHAR}, 
+      #{dept,jdbcType=VARCHAR}, #{superior,jdbcType=VARCHAR}, #{post,jdbcType=VARCHAR}, 
+      #{function,jdbcType=VARCHAR}, #{workplace,jdbcType=VARCHAR}, #{account,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{rank,jdbcType=VARCHAR}, #{opflag,jdbcType=VARCHAR}, 
+      #{opdate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.com.busi.domain.TWorkInfo">
+    <!--@mbg.generated-->
+    insert into t_work_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="jobno != null">
+        JobNo,
+      </if>
+      <if test="institution != null">
+        institution,
+      </if>
+      <if test="dept != null">
+        Dept,
+      </if>
+      <if test="superior != null">
+        superior,
+      </if>
+      <if test="post != null">
+        post,
+      </if>
+      <if test="function != null">
+        `function`,
+      </if>
+      <if test="workplace != null">
+        workplace,
+      </if>
+      <if test="account != null">
+        account,
+      </if>
+      <if test="password != null">
+        `Password`,
+      </if>
+      <if test="rank != null">
+        `Rank`,
+      </if>
+      <if test="opflag != null">
+        opflag,
+      </if>
+      <if test="opdate != null">
+        opdate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="jobno != null">
+        #{jobno,jdbcType=VARCHAR},
+      </if>
+      <if test="institution != null">
+        #{institution,jdbcType=VARCHAR},
+      </if>
+      <if test="dept != null">
+        #{dept,jdbcType=VARCHAR},
+      </if>
+      <if test="superior != null">
+        #{superior,jdbcType=VARCHAR},
+      </if>
+      <if test="post != null">
+        #{post,jdbcType=VARCHAR},
+      </if>
+      <if test="function != null">
+        #{function,jdbcType=VARCHAR},
+      </if>
+      <if test="workplace != null">
+        #{workplace,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null">
+        #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="rank != null">
+        #{rank,jdbcType=VARCHAR},
+      </if>
+      <if test="opflag != null">
+        #{opflag,jdbcType=VARCHAR},
+      </if>
+      <if test="opdate != null">
+        #{opdate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.com.busi.domain.TWorkInfo">
+    <!--@mbg.generated-->
+    update t_work_info
+    <set>
+      <if test="jobno != null">
+        JobNo = #{jobno,jdbcType=VARCHAR},
+      </if>
+      <if test="institution != null">
+        institution = #{institution,jdbcType=VARCHAR},
+      </if>
+      <if test="dept != null">
+        Dept = #{dept,jdbcType=VARCHAR},
+      </if>
+      <if test="superior != null">
+        superior = #{superior,jdbcType=VARCHAR},
+      </if>
+      <if test="post != null">
+        post = #{post,jdbcType=VARCHAR},
+      </if>
+      <if test="function != null">
+        `function` = #{function,jdbcType=VARCHAR},
+      </if>
+      <if test="workplace != null">
+        workplace = #{workplace,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null">
+        account = #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        `Password` = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="rank != null">
+        `Rank` = #{rank,jdbcType=VARCHAR},
+      </if>
+      <if test="opflag != null">
+        opflag = #{opflag,jdbcType=VARCHAR},
+      </if>
+      <if test="opdate != null">
+        opdate = #{opdate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.com.busi.domain.TWorkInfo">
+    <!--@mbg.generated-->
+    update t_work_info
+    set JobNo = #{jobno,jdbcType=VARCHAR},
+      institution = #{institution,jdbcType=VARCHAR},
+      Dept = #{dept,jdbcType=VARCHAR},
+      superior = #{superior,jdbcType=VARCHAR},
+      post = #{post,jdbcType=VARCHAR},
+      `function` = #{function,jdbcType=VARCHAR},
+      workplace = #{workplace,jdbcType=VARCHAR},
+      account = #{account,jdbcType=VARCHAR},
+      `Password` = #{password,jdbcType=VARCHAR},
+      `Rank` = #{rank,jdbcType=VARCHAR},
+      opflag = #{opflag,jdbcType=VARCHAR},
+      opdate = #{opdate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.busi.mapper.TStandardizingSystemMapper">
+  <resultMap id="BaseResultMap" type="cn.com.busi.domain.TStandardizingSystem">
+    <!--@mbg.generated-->
+    <!--@Table t_standardizing_system-->
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="number" jdbcType="VARCHAR" property="number" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="dept" jdbcType="VARCHAR" property="dept" />
+    <result column="Effectivedate" jdbcType="DATE" property="effectivedate" />
+    <result column="expirationdate" jdbcType="DATE" property="expirationdate" />
+    <result column="category" jdbcType="VARCHAR" property="category" />
+    <result column="tag" jdbcType="VARCHAR" property="tag" />
+    <result column="abstracts" jdbcType="LONGVARCHAR" property="abstracts" />
+    <result column="accessory" jdbcType="VARCHAR" property="accessory" />
+    <result column="Author" jdbcType="VARCHAR" property="author" />
+    <result column="opdate" jdbcType="TIMESTAMP" property="opdate" />
+    <result column="Audit_status" jdbcType="VARCHAR" property="auditStatus" />
+    <result column="Auditdate" jdbcType="TIMESTAMP" property="auditdate" />
+    <result column="Audit_opinion" jdbcType="VARCHAR" property="auditOpinion" />
+    <result column="auditor" jdbcType="VARCHAR" property="auditor" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, title, `number`, `type`, dept, Effectivedate, expirationdate, category, tag, 
+    abstracts, accessory, Author, opdate, Audit_status, Auditdate, Audit_opinion, auditor
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from t_standardizing_system
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from t_standardizing_system
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.com.busi.domain.TStandardizingSystem">
+    <!--@mbg.generated-->
+    insert into t_standardizing_system (id, title, `number`, 
+      `type`, dept, Effectivedate, 
+      expirationdate, category, tag, 
+      abstracts, accessory, Author, 
+      opdate, Audit_status, Auditdate, 
+      Audit_opinion, auditor)
+    values (#{id,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{number,jdbcType=VARCHAR}, 
+      #{type,jdbcType=VARCHAR}, #{dept,jdbcType=VARCHAR}, #{effectivedate,jdbcType=DATE}, 
+      #{expirationdate,jdbcType=DATE}, #{category,jdbcType=VARCHAR}, #{tag,jdbcType=VARCHAR}, 
+      #{abstracts,jdbcType=LONGVARCHAR}, #{accessory,jdbcType=VARCHAR}, #{author,jdbcType=VARCHAR}, 
+      #{opdate,jdbcType=TIMESTAMP}, #{auditStatus,jdbcType=VARCHAR}, #{auditdate,jdbcType=TIMESTAMP}, 
+      #{auditOpinion,jdbcType=VARCHAR}, #{auditor,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.com.busi.domain.TStandardizingSystem">
+    <!--@mbg.generated-->
+    insert into t_standardizing_system
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="number != null">
+        `number`,
+      </if>
+      <if test="type != null">
+        `type`,
+      </if>
+      <if test="dept != null">
+        dept,
+      </if>
+      <if test="effectivedate != null">
+        Effectivedate,
+      </if>
+      <if test="expirationdate != null">
+        expirationdate,
+      </if>
+      <if test="category != null">
+        category,
+      </if>
+      <if test="tag != null">
+        tag,
+      </if>
+      <if test="abstracts != null">
+        abstracts,
+      </if>
+      <if test="accessory != null">
+        accessory,
+      </if>
+      <if test="author != null">
+        Author,
+      </if>
+      <if test="opdate != null">
+        opdate,
+      </if>
+      <if test="auditStatus != null">
+        Audit_status,
+      </if>
+      <if test="auditdate != null">
+        Auditdate,
+      </if>
+      <if test="auditOpinion != null">
+        Audit_opinion,
+      </if>
+      <if test="auditor != null">
+        auditor,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="number != null">
+        #{number,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="dept != null">
+        #{dept,jdbcType=VARCHAR},
+      </if>
+      <if test="effectivedate != null">
+        #{effectivedate,jdbcType=DATE},
+      </if>
+      <if test="expirationdate != null">
+        #{expirationdate,jdbcType=DATE},
+      </if>
+      <if test="category != null">
+        #{category,jdbcType=VARCHAR},
+      </if>
+      <if test="tag != null">
+        #{tag,jdbcType=VARCHAR},
+      </if>
+      <if test="abstracts != null">
+        #{abstracts,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="accessory != null">
+        #{accessory,jdbcType=VARCHAR},
+      </if>
+      <if test="author != null">
+        #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="opdate != null">
+        #{opdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="auditStatus != null">
+        #{auditStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="auditdate != null">
+        #{auditdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="auditOpinion != null">
+        #{auditOpinion,jdbcType=VARCHAR},
+      </if>
+      <if test="auditor != null">
+        #{auditor,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.com.busi.domain.TStandardizingSystem">
+    <!--@mbg.generated-->
+    update t_standardizing_system
+    <set>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="number != null">
+        `number` = #{number,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        `type` = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="dept != null">
+        dept = #{dept,jdbcType=VARCHAR},
+      </if>
+      <if test="effectivedate != null">
+        Effectivedate = #{effectivedate,jdbcType=DATE},
+      </if>
+      <if test="expirationdate != null">
+        expirationdate = #{expirationdate,jdbcType=DATE},
+      </if>
+      <if test="category != null">
+        category = #{category,jdbcType=VARCHAR},
+      </if>
+      <if test="tag != null">
+        tag = #{tag,jdbcType=VARCHAR},
+      </if>
+      <if test="abstracts != null">
+        abstracts = #{abstracts,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="accessory != null">
+        accessory = #{accessory,jdbcType=VARCHAR},
+      </if>
+      <if test="author != null">
+        Author = #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="opdate != null">
+        opdate = #{opdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="auditStatus != null">
+        Audit_status = #{auditStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="auditdate != null">
+        Auditdate = #{auditdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="auditOpinion != null">
+        Audit_opinion = #{auditOpinion,jdbcType=VARCHAR},
+      </if>
+      <if test="auditor != null">
+        auditor = #{auditor,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.com.busi.domain.TStandardizingSystem">
+    <!--@mbg.generated-->
+    update t_standardizing_system
+    set title = #{title,jdbcType=VARCHAR},
+      `number` = #{number,jdbcType=VARCHAR},
+      `type` = #{type,jdbcType=VARCHAR},
+      dept = #{dept,jdbcType=VARCHAR},
+      Effectivedate = #{effectivedate,jdbcType=DATE},
+      expirationdate = #{expirationdate,jdbcType=DATE},
+      category = #{category,jdbcType=VARCHAR},
+      tag = #{tag,jdbcType=VARCHAR},
+      abstracts = #{abstracts,jdbcType=LONGVARCHAR},
+      accessory = #{accessory,jdbcType=VARCHAR},
+      Author = #{author,jdbcType=VARCHAR},
+      opdate = #{opdate,jdbcType=TIMESTAMP},
+      Audit_status = #{auditStatus,jdbcType=VARCHAR},
+      Auditdate = #{auditdate,jdbcType=TIMESTAMP},
+      Audit_opinion = #{auditOpinion,jdbcType=VARCHAR},
+      auditor = #{auditor,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+<!--auto generated by MybatisCodeHelper on 2020-12-14-->
+  <select id="findByAll" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" />
+    from t_standardizing_system
+    <where>
+        <if test="tStandardizingSystem.id != null">
+         and id=#{tStandardizingSystem.id,jdbcType=VARCHAR}</if>
+        <if test="tStandardizingSystem.title != null">
+         and title like concat(concat('%',#{tStandardizingSystem.title,jdbcType=VARCHAR}),'%')</if>
+        <if test="tStandardizingSystem.number != null">
+         and `number`=#{tStandardizingSystem.number,jdbcType=VARCHAR}</if>
+        <if test="tStandardizingSystem.type != null">
+         and `type`=#{tStandardizingSystem.type,jdbcType=VARCHAR}</if>
+        <if test="tStandardizingSystem.dept != null">
+         and dept=#{tStandardizingSystem.dept,jdbcType=VARCHAR}</if>
+        <if test="tStandardizingSystem.effectivedate != null">
+         and Effectivedate=#{tStandardizingSystem.effectivedate,jdbcType=DATE}</if>
+        <if test="tStandardizingSystem.expirationdate != null">
+         and expirationdate=#{tStandardizingSystem.expirationdate,jdbcType=DATE}</if>
+        <if test="tStandardizingSystem.category != null">
+         and category=#{tStandardizingSystem.category,jdbcType=VARCHAR}</if>
+        <if test="tStandardizingSystem.tag != null">
+         and tag=#{tStandardizingSystem.tag,jdbcType=VARCHAR}</if>
+        <if test="tStandardizingSystem.abstracts != null">
+         and abstracts=#{tStandardizingSystem.abstracts,jdbcType=LONGVARCHAR}</if>
+        <if test="tStandardizingSystem.accessory != null">
+         and accessory=#{tStandardizingSystem.accessory,jdbcType=VARCHAR}</if>
+        <if test="tStandardizingSystem.author != null">
+         and Author=#{tStandardizingSystem.author,jdbcType=VARCHAR}</if>
+         <if test="tStandardizingSystem.opdate != null">
+         and opdate=#{tStandardizingSystem.opdate,jdbcType=VARCHAR}</if>
+         <if test="tStandardizingSystem.auditStatus != null">
+         and Audit_status in (${tStandardizingSystem.auditStatus})</if>
+         <if test="tStandardizingSystem.auditdate != null">
+         and Auditdate=#{tStandardizingSystem.auditdate,jdbcType=VARCHAR}</if>
+         <if test="timeStart != null">
+         and Effectivedate &gt;= #{timeStart,jdbcType=DATE}</if>
+         <if test="timeEnd != null">
+         and Effectivedate &lt;= #{timeEnd,jdbcType=DATE}</if>
+    </where>
+    <if test="order != null">
+    order by ${order}</if>
+    <if test="by != null">
+    ${by}</if>
+  </select>
+</mapper>

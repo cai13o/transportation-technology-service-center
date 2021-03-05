@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.busi.mapper.TJobsMapper">
+  <resultMap id="BaseResultMap" type="cn.com.busi.domain.TJobs">
+    <!--@mbg.generated-->
+    <!--@Table t_jobs-->
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="introduction" jdbcType="VARCHAR" property="introduction" />
+    <result column="stutas" jdbcType="VARCHAR" property="stutas" />
+    <result column="Number" jdbcType="INTEGER" property="number" />
+    <result column="opflag" jdbcType="VARCHAR" property="opflag" />
+    <result column="opdate" jdbcType="TIMESTAMP" property="opdate" />
+    <result column="dept" jdbcType="VARCHAR" property="dept" />
+  </resultMap>
+  <resultMap id="jobsDeptMap" extends="BaseResultMap" type="cn.com.busi.domain.TJobs" >
+        <collection property="tDept" columnPrefix="Dept_" resultMap="cn.com.busi.mapper.TDeptMapper.BaseResultMap"/>
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, `name`, introduction, stutas, `Number`, opflag, opdate, dept
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="jobsDeptMap">
+    <!--@mbg.generated-->
+    select 
+    j.id, j.`name`, j.introduction, j.stutas, j.`Number`, j.opflag, j.opdate, j.dept, d.`name` Dept_name
+    from t_jobs j
+    inner join t_dept d on j.dept = d.id
+    where j.id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from t_jobs
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.com.busi.domain.TJobs">
+    <!--@mbg.generated-->
+    insert into t_jobs (id, `name`, introduction, 
+      stutas, `Number`, opflag, 
+      opdate, dept)
+    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{introduction,jdbcType=VARCHAR}, 
+      #{stutas,jdbcType=VARCHAR}, #{number,jdbcType=INTEGER}, #{opflag,jdbcType=VARCHAR}, 
+      #{opdate,jdbcType=TIMESTAMP}, #{dept,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.com.busi.domain.TJobs">
+    <!--@mbg.generated-->
+    insert into t_jobs
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="introduction != null">
+        introduction,
+      </if>
+      <if test="stutas != null">
+        stutas,
+      </if>
+      <if test="number != null">
+        `Number`,
+      </if>
+      <if test="opflag != null">
+        opflag,
+      </if>
+      <if test="opdate != null">
+        opdate,
+      </if>
+      <if test="dept != null">
+        dept,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="introduction != null">
+        #{introduction,jdbcType=VARCHAR},
+      </if>
+      <if test="stutas != null">
+        #{stutas,jdbcType=VARCHAR},
+      </if>
+      <if test="number != null">
+        #{number,jdbcType=INTEGER},
+      </if>
+      <if test="opflag != null">
+        #{opflag,jdbcType=VARCHAR},
+      </if>
+      <if test="opdate != null">
+        #{opdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dept != null">
+        #{dept,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.com.busi.domain.TJobs">
+    <!--@mbg.generated-->
+    update t_jobs
+    <set>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="introduction != null">
+        introduction = #{introduction,jdbcType=VARCHAR},
+      </if>
+      <if test="stutas != null">
+        stutas = #{stutas,jdbcType=VARCHAR},
+      </if>
+      <if test="number != null">
+        `Number` = #{number,jdbcType=INTEGER},
+      </if>
+      <if test="opflag != null">
+        opflag = #{opflag,jdbcType=VARCHAR},
+      </if>
+      <if test="opdate != null">
+        opdate = #{opdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dept != null">
+        dept = #{dept,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.com.busi.domain.TJobs">
+    <!--@mbg.generated-->
+    update t_jobs
+    set `name` = #{name,jdbcType=VARCHAR},
+      introduction = #{introduction,jdbcType=VARCHAR},
+      stutas = #{stutas,jdbcType=VARCHAR},
+      `Number` = #{number,jdbcType=INTEGER},
+      opflag = #{opflag,jdbcType=VARCHAR},
+      opdate = #{opdate,jdbcType=TIMESTAMP},
+      dept = #{dept,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+
+  <select id="findByAll" resultMap="jobsDeptMap">
+    select j.id, j.`name`, j.introduction, j.stutas, j.`Number`, j.opflag, j.opdate, j.dept, d.`name` Dept_name
+    from t_jobs j
+    inner join t_dept d on j.dept = d.id
+    <where>
+        <if test="id != null">
+         and j.id=#{id,jdbcType=VARCHAR}</if>
+        <if test="name != null">
+         and j.`name`=#{name,jdbcType=VARCHAR}</if>
+        <if test="introduction != null">
+         and j.introduction=#{introduction,jdbcType=VARCHAR}</if>
+        <if test="stutas != null">
+         and j.stutas=#{stutas,jdbcType=VARCHAR}</if>
+        <if test="number != null">
+         and j.`Number`=#{number,jdbcType=INTEGER}</if>
+        <if test="opflag != null">
+         and j.opflag=#{opflag,jdbcType=VARCHAR}</if>
+        <if test="opdate != null">
+         and j.opdate=#{opdate,jdbcType=TIMESTAMP}</if>
+        <if test="dept != null">
+         and j.dept=#{dept,jdbcType=VARCHAR}</if>
+    </where>
+  </select>
+
+</mapper>

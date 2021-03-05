@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.busi.mapper.TItemInfoMapper">
+  <resultMap id="BaseResultMap" type="cn.com.busi.domain.TItemInfo">
+    <!--@mbg.generated-->
+    <!--@Table t_item_info-->
+    <id column="sort" jdbcType="VARCHAR" property="sort" />
+    <result column="id" jdbcType="VARCHAR" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="number" jdbcType="VARCHAR" property="number" />
+    <result column="principal" jdbcType="VARCHAR" property="principal" />
+    <result column="dept" jdbcType="VARCHAR" property="dept" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="keyword" jdbcType="VARCHAR" property="keyword" />
+    <result column="planstartdate" jdbcType="DATE" property="planstartdate" />
+    <result column="planenddate" jdbcType="DATE" property="planenddate" />
+    <result column="startdate" jdbcType="DATE" property="startdate" />
+    <result column="enddate" jdbcType="DATE" property="enddate" />
+    <result column="planday" jdbcType="VARCHAR" property="planday" />
+    <result column="day" jdbcType="VARCHAR" property="day" />
+    <result column="Goal" jdbcType="VARCHAR" property="goal" />
+    <result column="scope" jdbcType="VARCHAR" property="scope" />
+    <result column="creator" jdbcType="VARCHAR" property="creator" />
+    <result column="CreateDate" jdbcType="DATE" property="createdate" />
+    <result column="schedule" jdbcType="VARCHAR" property="schedule" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    sort, id, `name`, `number`, principal, dept, `status`, keyword, planstartdate, planenddate, 
+    startdate, enddate, planday, `day`, Goal, `scope`, creator, CreateDate, schedule
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from t_item_info
+    where sort = #{sort,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from t_item_info
+    where sort = #{sort,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.com.busi.domain.TItemInfo">
+    <!--@mbg.generated-->
+    insert into t_item_info (sort, id, `name`, 
+      `number`, principal, dept, 
+      `status`, keyword, planstartdate, 
+      planenddate, startdate, enddate, 
+      planday, `day`, Goal, 
+      `scope`, creator, CreateDate, 
+      schedule)
+    values (#{sort,jdbcType=VARCHAR}, #{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{number,jdbcType=VARCHAR}, #{principal,jdbcType=VARCHAR}, #{dept,jdbcType=VARCHAR}, 
+      #{status,jdbcType=VARCHAR}, #{keyword,jdbcType=VARCHAR}, #{planstartdate,jdbcType=DATE}, 
+      #{planenddate,jdbcType=DATE}, #{startdate,jdbcType=DATE}, #{enddate,jdbcType=DATE}, 
+      #{planday,jdbcType=VARCHAR}, #{day,jdbcType=VARCHAR}, #{goal,jdbcType=VARCHAR}, 
+      #{scope,jdbcType=VARCHAR}, #{creator,jdbcType=VARCHAR}, #{createdate,jdbcType=DATE}, 
+      #{schedule,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.com.busi.domain.TItemInfo">
+    <!--@mbg.generated-->
+    insert into t_item_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="sort != null">
+        sort,
+      </if>
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="number != null">
+        `number`,
+      </if>
+      <if test="principal != null">
+        principal,
+      </if>
+      <if test="dept != null">
+        dept,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="keyword != null">
+        keyword,
+      </if>
+      <if test="planstartdate != null">
+        planstartdate,
+      </if>
+      <if test="planenddate != null">
+        planenddate,
+      </if>
+      <if test="startdate != null">
+        startdate,
+      </if>
+      <if test="enddate != null">
+        enddate,
+      </if>
+      <if test="planday != null">
+        planday,
+      </if>
+      <if test="day != null">
+        `day`,
+      </if>
+      <if test="goal != null">
+        Goal,
+      </if>
+      <if test="scope != null">
+        `scope`,
+      </if>
+      <if test="creator != null">
+        creator,
+      </if>
+      <if test="createdate != null">
+        CreateDate,
+      </if>
+      <if test="schedule != null">
+        schedule,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="sort != null">
+        #{sort,jdbcType=VARCHAR},
+      </if>
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="number != null">
+        #{number,jdbcType=VARCHAR},
+      </if>
+      <if test="principal != null">
+        #{principal,jdbcType=VARCHAR},
+      </if>
+      <if test="dept != null">
+        #{dept,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="keyword != null">
+        #{keyword,jdbcType=VARCHAR},
+      </if>
+      <if test="planstartdate != null">
+        #{planstartdate,jdbcType=DATE},
+      </if>
+      <if test="planenddate != null">
+        #{planenddate,jdbcType=DATE},
+      </if>
+      <if test="startdate != null">
+        #{startdate,jdbcType=DATE},
+      </if>
+      <if test="enddate != null">
+        #{enddate,jdbcType=DATE},
+      </if>
+      <if test="planday != null">
+        #{planday,jdbcType=VARCHAR},
+      </if>
+      <if test="day != null">
+        #{day,jdbcType=VARCHAR},
+      </if>
+      <if test="goal != null">
+        #{goal,jdbcType=VARCHAR},
+      </if>
+      <if test="scope != null">
+        #{scope,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null">
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null">
+        #{createdate,jdbcType=DATE},
+      </if>
+      <if test="schedule != null">
+        #{schedule,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.com.busi.domain.TItemInfo">
+    <!--@mbg.generated-->
+    update t_item_info
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="number != null">
+        `number` = #{number,jdbcType=VARCHAR},
+      </if>
+      <if test="principal != null">
+        principal = #{principal,jdbcType=VARCHAR},
+      </if>
+      <if test="dept != null">
+        dept = #{dept,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="keyword != null">
+        keyword = #{keyword,jdbcType=VARCHAR},
+      </if>
+      <if test="planstartdate != null">
+        planstartdate = #{planstartdate,jdbcType=DATE},
+      </if>
+      <if test="planenddate != null">
+        planenddate = #{planenddate,jdbcType=DATE},
+      </if>
+      <if test="startdate != null">
+        startdate = #{startdate,jdbcType=DATE},
+      </if>
+      <if test="enddate != null">
+        enddate = #{enddate,jdbcType=DATE},
+      </if>
+      <if test="planday != null">
+        planday = #{planday,jdbcType=VARCHAR},
+      </if>
+      <if test="day != null">
+        `day` = #{day,jdbcType=VARCHAR},
+      </if>
+      <if test="goal != null">
+        Goal = #{goal,jdbcType=VARCHAR},
+      </if>
+      <if test="scope != null">
+        `scope` = #{scope,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null">
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null">
+        CreateDate = #{createdate,jdbcType=DATE},
+      </if>
+      <if test="schedule != null">
+        schedule = #{schedule,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where sort = #{sort,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.com.busi.domain.TItemInfo">
+    <!--@mbg.generated-->
+    update t_item_info
+    set id = #{id,jdbcType=VARCHAR},
+      `name` = #{name,jdbcType=VARCHAR},
+      `number` = #{number,jdbcType=VARCHAR},
+      principal = #{principal,jdbcType=VARCHAR},
+      dept = #{dept,jdbcType=VARCHAR},
+      `status` = #{status,jdbcType=VARCHAR},
+      keyword = #{keyword,jdbcType=VARCHAR},
+      planstartdate = #{planstartdate,jdbcType=DATE},
+      planenddate = #{planenddate,jdbcType=DATE},
+      startdate = #{startdate,jdbcType=DATE},
+      enddate = #{enddate,jdbcType=DATE},
+      planday = #{planday,jdbcType=VARCHAR},
+      `day` = #{day,jdbcType=VARCHAR},
+      Goal = #{goal,jdbcType=VARCHAR},
+      `scope` = #{scope,jdbcType=VARCHAR},
+      creator = #{creator,jdbcType=VARCHAR},
+      CreateDate = #{createdate,jdbcType=DATE},
+      schedule = #{schedule,jdbcType=VARCHAR}
+    where sort = #{sort,jdbcType=VARCHAR}
+  </update>
+</mapper>

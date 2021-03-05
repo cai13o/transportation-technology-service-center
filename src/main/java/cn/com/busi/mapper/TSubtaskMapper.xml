@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.busi.mapper.TSubtaskMapper">
+  <resultMap id="BaseResultMap" type="cn.com.busi.domain.TSubtask">
+    <!--@mbg.generated-->
+    <!--@Table t_subtask-->
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="principal" jdbcType="VARCHAR" property="principal" />
+    <result column="setRecipient" jdbcType="VARCHAR" property="setrecipient" />
+    <result column="deadline" jdbcType="TIMESTAMP" property="deadline" />
+    <result column="weight" jdbcType="DOUBLE" property="weight" />
+    <result column="proportion" jdbcType="VARCHAR" property="proportion" />
+    <result column="tid" jdbcType="VARCHAR" property="tid" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="progress" jdbcType="INTEGER" property="progress" />
+    <result column="context" jdbcType="VARCHAR" property="context" />
+    <result column="startdate" jdbcType="TIMESTAMP" property="startdate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, `name`, principal, setRecipient, deadline, weight, proportion, tid, `status`, 
+    progress, context, startdate
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from t_subtask
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from t_subtask
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.com.busi.domain.TSubtask">
+    <!--@mbg.generated-->
+    insert into t_subtask (id, `name`, principal, 
+      setRecipient, deadline, weight, 
+      proportion, tid, `status`, 
+      progress, context, startdate
+      )
+    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{principal,jdbcType=VARCHAR}, 
+      #{setrecipient,jdbcType=VARCHAR}, #{deadline,jdbcType=TIMESTAMP}, #{weight,jdbcType=DOUBLE}, 
+      #{proportion,jdbcType=VARCHAR}, #{tid,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, 
+      #{progress,jdbcType=INTEGER}, #{context,jdbcType=VARCHAR}, #{startdate,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.com.busi.domain.TSubtask">
+    <!--@mbg.generated-->
+    insert into t_subtask
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="principal != null">
+        principal,
+      </if>
+      <if test="setrecipient != null">
+        setRecipient,
+      </if>
+      <if test="deadline != null">
+        deadline,
+      </if>
+      <if test="weight != null">
+        weight,
+      </if>
+      <if test="proportion != null">
+        proportion,
+      </if>
+      <if test="tid != null">
+        tid,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="progress != null">
+        progress,
+      </if>
+      <if test="context != null">
+        context,
+      </if>
+      <if test="startdate != null">
+        startdate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="principal != null">
+        #{principal,jdbcType=VARCHAR},
+      </if>
+      <if test="setrecipient != null">
+        #{setrecipient,jdbcType=VARCHAR},
+      </if>
+      <if test="deadline != null">
+        #{deadline,jdbcType=TIMESTAMP},
+      </if>
+      <if test="weight != null">
+        #{weight,jdbcType=DOUBLE},
+      </if>
+      <if test="proportion != null">
+        #{proportion,jdbcType=VARCHAR},
+      </if>
+      <if test="tid != null">
+        #{tid,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="progress != null">
+        #{progress,jdbcType=INTEGER},
+      </if>
+      <if test="context != null">
+        #{context,jdbcType=VARCHAR},
+      </if>
+      <if test="startdate != null">
+        #{startdate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.com.busi.domain.TSubtask">
+    <!--@mbg.generated-->
+    update t_subtask
+    <set>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="principal != null">
+        principal = #{principal,jdbcType=VARCHAR},
+      </if>
+      <if test="setrecipient != null">
+        setRecipient = #{setrecipient,jdbcType=VARCHAR},
+      </if>
+      <if test="deadline != null">
+        deadline = #{deadline,jdbcType=TIMESTAMP},
+      </if>
+      <if test="weight != null">
+        weight = #{weight,jdbcType=DOUBLE},
+      </if>
+      <if test="proportion != null">
+        proportion = #{proportion,jdbcType=VARCHAR},
+      </if>
+      <if test="tid != null">
+        tid = #{tid,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="progress != null">
+        progress = #{progress,jdbcType=INTEGER},
+      </if>
+      <if test="context != null">
+        context = #{context,jdbcType=VARCHAR},
+      </if>
+      <if test="startdate != null">
+        startdate = #{startdate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.com.busi.domain.TSubtask">
+    <!--@mbg.generated-->
+    update t_subtask
+    set `name` = #{name,jdbcType=VARCHAR},
+      principal = #{principal,jdbcType=VARCHAR},
+      setRecipient = #{setrecipient,jdbcType=VARCHAR},
+      deadline = #{deadline,jdbcType=TIMESTAMP},
+      weight = #{weight,jdbcType=DOUBLE},
+      proportion = #{proportion,jdbcType=VARCHAR},
+      tid = #{tid,jdbcType=VARCHAR},
+      `status` = #{status,jdbcType=VARCHAR},
+      progress = #{progress,jdbcType=INTEGER},
+      context = #{context,jdbcType=VARCHAR},
+      startdate = #{startdate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+<!--auto generated by MybatisCodeHelper on 2021-01-08-->
+  <update id="updateByTid" parameterType="cn.com.busi.domain.TSubtask">
+    <!--@mbg.generated-->
+    update t_subtask
+    <set>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="principal != null">
+        principal = #{principal,jdbcType=VARCHAR},
+      </if>
+      <if test="setrecipient != null">
+        setRecipient = #{setrecipient,jdbcType=VARCHAR},
+      </if>
+      <if test="deadline != null">
+        deadline = #{deadline,jdbcType=TIMESTAMP},
+      </if>
+      <if test="weight != null">
+        weight = #{weight,jdbcType=DOUBLE},
+      </if>
+      <if test="proportion != null">
+        proportion = #{proportion,jdbcType=VARCHAR},
+      </if>
+      <if test="tid != null">
+        tid = #{tid,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="progress != null">
+        progress = #{progress,jdbcType=INTEGER},
+      </if>
+      <if test="context != null">
+        context = #{context,jdbcType=VARCHAR},
+      </if>
+      <if test="startdate != null">
+        startdate = #{startdate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where tid=#{tid,jdbcType=VARCHAR}
+  </update>
+</mapper>

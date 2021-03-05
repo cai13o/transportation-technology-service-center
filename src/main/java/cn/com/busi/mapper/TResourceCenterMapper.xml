@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.busi.mapper.TResourceCenterMapper">
+  <resultMap id="BaseResultMap" type="cn.com.busi.domain.TResourceCenter">
+    <!--@mbg.generated-->
+    <!--@Table t_resource_center-->
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="size" jdbcType="VARCHAR" property="size" />
+    <result column="opdate" jdbcType="TIMESTAMP" property="opdate" />
+    <result column="Audit_status" jdbcType="VARCHAR" property="auditStatus" />
+    <result column="Auditdate" jdbcType="TIMESTAMP" property="auditdate" />
+    <result column="operator" jdbcType="VARCHAR" property="operator" />
+    <result column="count" jdbcType="INTEGER" property="count" />
+    <result column="dept" jdbcType="VARCHAR" property="dept" />
+    <result column="Audit_opinion" jdbcType="VARCHAR" property="auditOpinion" />
+    <result column="auditor" jdbcType="VARCHAR" property="auditor" />
+    <result column="Disc" jdbcType="VARCHAR" property="disc" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, `name`, url, `size`, opdate, Audit_status, Auditdate, `operator`, `count`, dept, 
+    Audit_opinion, auditor, Disc
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from t_resource_center
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from t_resource_center
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.com.busi.domain.TResourceCenter">
+    <!--@mbg.generated-->
+    insert into t_resource_center (id, `name`, url, 
+      `size`, opdate, Audit_status, 
+      Auditdate, `operator`, `count`, 
+      dept, Audit_opinion, auditor, 
+      Disc)
+    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, 
+      #{size,jdbcType=VARCHAR}, #{opdate,jdbcType=TIMESTAMP}, #{auditStatus,jdbcType=VARCHAR}, 
+      #{auditdate,jdbcType=TIMESTAMP}, #{operator,jdbcType=VARCHAR}, #{count,jdbcType=INTEGER}, 
+      #{dept,jdbcType=VARCHAR}, #{auditOpinion,jdbcType=VARCHAR}, #{auditor,jdbcType=VARCHAR}, 
+      #{disc,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.com.busi.domain.TResourceCenter">
+    <!--@mbg.generated-->
+    insert into t_resource_center
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="url != null">
+        url,
+      </if>
+      <if test="size != null">
+        `size`,
+      </if>
+      <if test="opdate != null">
+        opdate,
+      </if>
+      <if test="auditStatus != null">
+        Audit_status,
+      </if>
+      <if test="auditdate != null">
+        Auditdate,
+      </if>
+      <if test="operator != null">
+        `operator`,
+      </if>
+      <if test="count != null">
+        `count`,
+      </if>
+      <if test="dept != null">
+        dept,
+      </if>
+      <if test="auditOpinion != null">
+        Audit_opinion,
+      </if>
+      <if test="auditor != null">
+        auditor,
+      </if>
+      <if test="disc != null">
+        Disc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="size != null">
+        #{size,jdbcType=VARCHAR},
+      </if>
+      <if test="opdate != null">
+        #{opdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="auditStatus != null">
+        #{auditStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="auditdate != null">
+        #{auditdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operator != null">
+        #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="count != null">
+        #{count,jdbcType=INTEGER},
+      </if>
+      <if test="dept != null">
+        #{dept,jdbcType=VARCHAR},
+      </if>
+      <if test="auditOpinion != null">
+        #{auditOpinion,jdbcType=VARCHAR},
+      </if>
+      <if test="auditor != null">
+        #{auditor,jdbcType=VARCHAR},
+      </if>
+      <if test="disc != null">
+        #{disc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.com.busi.domain.TResourceCenter">
+    <!--@mbg.generated-->
+    update t_resource_center
+    <set>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="size != null">
+        `size` = #{size,jdbcType=VARCHAR},
+      </if>
+      <if test="opdate != null">
+        opdate = #{opdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="auditStatus != null">
+        Audit_status = #{auditStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="auditdate != null">
+        Auditdate = #{auditdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operator != null">
+        `operator` = #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="count != null">
+        `count` = #{count,jdbcType=INTEGER},
+      </if>
+      <if test="dept != null">
+        dept = #{dept,jdbcType=VARCHAR},
+      </if>
+      <if test="auditOpinion != null">
+        Audit_opinion = #{auditOpinion,jdbcType=VARCHAR},
+      </if>
+      <if test="auditor != null">
+        auditor = #{auditor,jdbcType=VARCHAR},
+      </if>
+      <if test="disc != null">
+        Disc = #{disc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.com.busi.domain.TResourceCenter">
+    <!--@mbg.generated-->
+    update t_resource_center
+    set `name` = #{name,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      `size` = #{size,jdbcType=VARCHAR},
+      opdate = #{opdate,jdbcType=TIMESTAMP},
+      Audit_status = #{auditStatus,jdbcType=VARCHAR},
+      Auditdate = #{auditdate,jdbcType=TIMESTAMP},
+      `operator` = #{operator,jdbcType=VARCHAR},
+      `count` = #{count,jdbcType=INTEGER},
+      dept = #{dept,jdbcType=VARCHAR},
+      Audit_opinion = #{auditOpinion,jdbcType=VARCHAR},
+      auditor = #{auditor,jdbcType=VARCHAR},
+      Disc = #{disc,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+<!--auto generated by MybatisCodeHelper on 2021-01-04-->
+  <select id="findByAll" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" />
+    from t_resource_center
+    <where>
+<if test="stutas == null">
+ ((disc = '1' or (disc = "0"  and dept = #{depts,jdbcType=VARCHAR})) and (Audit_status = 4 or (operator = #{uname,jdbcType=VARCHAR} or Audit_status = 4))) </if>
+<if test="tResourceCenter.id != null">
+ and id=#{tResourceCenter.id,jdbcType=VARCHAR}</if>
+<if test="tResourceCenter.name != null">
+ and `name`=#{tResourceCenter.name,jdbcType=VARCHAR}</if>
+<if test="tResourceCenter.url != null">
+ and url=#{tResourceCenter.url,jdbcType=VARCHAR}</if>
+<if test="tResourceCenter.size != null">
+ and `size`=#{tResourceCenter.size,jdbcType=VARCHAR}</if>
+<if test="tResourceCenter.opdate != null">
+ and opdate=#{tResourceCenter.opdate,jdbcType=TIMESTAMP}</if>
+<if test="tResourceCenter.auditStatus != null">
+ and Audit_status=#{tResourceCenter.auditStatus,jdbcType=VARCHAR}</if>
+<if test="tResourceCenter.auditdate != null">
+ and Auditdate=#{tResourceCenter.auditdate,jdbcType=TIMESTAMP}</if>
+<if test="tResourceCenter.operator != null">
+ and `operator`=#{tResourceCenter.operator,jdbcType=VARCHAR}</if>
+<if test="tResourceCenter.count != null">
+ and `count`=#{tResourceCenter.count,jdbcType=INTEGER}</if>
+<if test="tResourceCenter.dept != null">
+ and dept=#{tResourceCenter.dept,jdbcType=VARCHAR}</if>
+<if test="tResourceCenter.auditOpinion != null">
+ and Audit_opinion=#{tResourceCenter.auditOpinion,jdbcType=VARCHAR}</if>
+<if test="tResourceCenter.auditor != null">
+ and auditor=#{tResourceCenter.auditor,jdbcType=VARCHAR}</if>
+ <if test="timeStart != null">
+and TO_DAYS(opdate) &gt;= TO_DAYS(#{timeStart,jdbcType=DATE})</if>
+<if test="timeEnd != null">
+and TO_DAYS(opdate) &lt;= TO_DAYS(#{timeEnd,jdbcType=DATE})</if>
+    </where>
+    order by case when dept='综合办公室' then 0  else 1 end  asc,dept,Disc desc,operator
+  </select>
+</mapper>

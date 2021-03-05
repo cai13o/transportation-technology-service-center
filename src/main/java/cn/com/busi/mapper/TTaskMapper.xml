@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.busi.mapper.TTaskMapper">
+  <resultMap id="BaseResultMap" type="cn.com.busi.domain.TTask">
+    <!--@mbg.generated-->
+    <!--@Table t_task-->
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="nominator" jdbcType="VARCHAR" property="nominator" />
+    <result column="assigned_to" jdbcType="VARCHAR" property="assignedTo" />
+    <result column="deadline" jdbcType="TIMESTAMP" property="deadline" />
+    <result column="copy_to" jdbcType="VARCHAR" property="copyTo" />
+    <result column="content" jdbcType="LONGVARCHAR" property="content" />
+    <result column="accessory" jdbcType="VARCHAR" property="accessory" />
+    <result column="source" jdbcType="VARCHAR" property="source" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="by_notification" jdbcType="VARCHAR" property="byNotification" />
+    <result column="creator" jdbcType="VARCHAR" property="creator" />
+    <result column="createdate" jdbcType="TIMESTAMP" property="createdate" />
+    <result column="ATC" jdbcType="TIMESTAMP" property="atc" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="satisfaction" jdbcType="VARCHAR" property="satisfaction" />
+    <result column="evaluation" jdbcType="LONGVARCHAR" property="evaluation" />
+    <result column="progress" jdbcType="INTEGER" property="progress" />
+    <result column="dept" jdbcType="VARCHAR" property="dept" />
+    <result column="Audit_status" jdbcType="VARCHAR" property="auditStatus" />
+    <result column="Auditdate" jdbcType="TIMESTAMP" property="auditdate" />
+    <result column="Audit_opinion" jdbcType="VARCHAR" property="auditOpinion" />
+    <result column="auditor" jdbcType="VARCHAR" property="auditor" />
+    <result column="Disc" jdbcType="VARCHAR" property="disc" />
+    <result column="startdate" jdbcType="TIMESTAMP" property="startdate" />
+  </resultMap>
+
+  <resultMap extends="BaseResultMap" id="taskSubtaskListMap" type="cn.com.busi.domain.TTask">
+        <collection columnPrefix="Subtask_" property="SubtaskList" resultMap="cn.com.busi.mapper.TSubtaskMapper.BaseResultMap" />
+        <collection columnPrefix="Dept_" property="tDept" resultMap="cn.com.busi.mapper.TDeptMapper.BaseResultMap" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, `name`, nominator, assigned_to, deadline, copy_to, content, accessory, `source`,
+    `type`, by_notification, creator, createdate, ATC, `status`, satisfaction, evaluation,
+    progress, dept, Audit_status, Auditdate, Audit_opinion, auditor,Disc,startdate
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="taskSubtaskListMap">
+    <!--@mbg.generated-->
+    select
+    t.id, t.`name`, t.nominator, t.assigned_to, t.deadline, t.copy_to, t.content, t.accessory, t.`source`,
+    t.`type`, t.by_notification, t.creator, t.createdate, t.ATC, t.`status`, t.satisfaction, t.evaluation,
+    t.progress, t.dept, t.Audit_status, t.Auditdate, t.Audit_opinion, t.auditor,t.Disc,t.startdate,
+    d.`name` Dept_name,s.id Subtask_id, s.`name` Subtask_name, s.principal Subtask_principal,
+    s.setRecipient Subtask_setRecipient, s.deadline Subtask_deadline, s.weight Subtask_weight, s.proportion Subtask_proportion,
+    s.tid Subtask_tid, s.`status` Subtask_status,  s.progress Subtask_progress, s.startdate Subtask_startdate
+    from t_task t
+    inner join t_dept d on t.dept=d.id
+    left join t_subtask s on t.id = s.tid
+    where t.id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from t_task
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.com.busi.domain.TTask">
+    <!--@mbg.generated-->
+    insert into t_task (id, `name`, nominator,
+      assigned_to, deadline, copy_to,
+      content, accessory, `source`,
+      `type`, by_notification, creator,
+      createdate, ATC, `status`,
+      satisfaction, evaluation, progress,
+      dept, Audit_status, Auditdate,
+      Audit_opinion, auditor,Disc,startdate)
+    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{nominator,jdbcType=VARCHAR},
+      #{assignedTo,jdbcType=VARCHAR}, #{deadline,jdbcType=TIMESTAMP}, #{copyTo,jdbcType=VARCHAR},
+      #{content,jdbcType=LONGVARCHAR}, #{accessory,jdbcType=VARCHAR}, #{source,jdbcType=VARCHAR},
+      #{type,jdbcType=VARCHAR}, #{byNotification,jdbcType=VARCHAR}, #{creator,jdbcType=VARCHAR},
+      #{createdate,jdbcType=TIMESTAMP}, #{atc,jdbcType=TIMESTAMP}, #{status,jdbcType=VARCHAR},
+      #{satisfaction,jdbcType=VARCHAR}, #{evaluation,jdbcType=LONGVARCHAR}, #{progress,jdbcType=INTEGER},
+      #{dept,jdbcType=VARCHAR}, #{auditStatus,jdbcType=VARCHAR}, #{auditdate,jdbcType=TIMESTAMP},
+      #{auditOpinion,jdbcType=VARCHAR}, #{auditor,jdbcType=VARCHAR},#{disc,jdbcType=VARCHAR},#{startdate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.com.busi.domain.TTask">
+    <!--@mbg.generated-->
+    insert into t_task
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="nominator != null">
+        nominator,
+      </if>
+      <if test="assignedTo != null">
+        assigned_to,
+      </if>
+      <if test="deadline != null">
+        deadline,
+      </if>
+      <if test="copyTo != null">
+        copy_to,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="accessory != null">
+        accessory,
+      </if>
+      <if test="source != null">
+        `source`,
+      </if>
+      <if test="type != null">
+        `type`,
+      </if>
+      <if test="byNotification != null">
+        by_notification,
+      </if>
+      <if test="creator != null">
+        creator,
+      </if>
+      <if test="createdate != null">
+        createdate,
+      </if>
+      <if test="atc != null">
+        ATC,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="satisfaction != null">
+        satisfaction,
+      </if>
+      <if test="evaluation != null">
+        evaluation,
+      </if>
+      <if test="progress != null">
+        progress,
+      </if>
+      <if test="dept != null">
+        dept,
+      </if>
+      <if test="auditStatus != null">
+        Audit_status,
+      </if>
+      <if test="auditdate != null">
+        Auditdate,
+      </if>
+      <if test="auditOpinion != null">
+        Audit_opinion,
+      </if>
+      <if test="auditor != null">
+        auditor,
+      </if>
+      <if test="disc != null">
+        disc,
+      </if>
+      <if test="startdate != null">
+        startdate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="nominator != null">
+        #{nominator,jdbcType=VARCHAR},
+      </if>
+      <if test="assignedTo != null">
+        #{assignedTo,jdbcType=VARCHAR},
+      </if>
+      <if test="deadline != null">
+        #{deadline,jdbcType=TIMESTAMP},
+      </if>
+      <if test="copyTo != null">
+        #{copyTo,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="accessory != null">
+        #{accessory,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null">
+        #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="byNotification != null">
+        #{byNotification,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null">
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null">
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="atc != null">
+        #{atc,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="satisfaction != null">
+        #{satisfaction,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluation != null">
+        #{evaluation,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="progress != null">
+        #{progress,jdbcType=INTEGER},
+      </if>
+      <if test="dept != null">
+        #{dept,jdbcType=VARCHAR},
+      </if>
+      <if test="auditStatus != null">
+        #{auditStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="auditdate != null">
+        #{auditdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="auditOpinion != null">
+        #{auditOpinion,jdbcType=VARCHAR},
+      </if>
+      <if test="auditor != null">
+        #{auditor,jdbcType=VARCHAR},
+      </if>
+      <if test="disc != null">
+        #{disc,jdbcType=VARCHAR},
+      </if>
+      <if test="startdate != null">
+        #{startdate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.com.busi.domain.TTask">
+    <!--@mbg.generated-->
+    update t_task
+    <set>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="nominator != null">
+        nominator = #{nominator,jdbcType=VARCHAR},
+      </if>
+      <if test="assignedTo != null">
+        assigned_to = #{assignedTo,jdbcType=VARCHAR},
+      </if>
+      <if test="deadline != null">
+        deadline = #{deadline,jdbcType=TIMESTAMP},
+      </if>
+      <if test="copyTo != null">
+        copy_to = #{copyTo,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="accessory != null">
+        accessory = #{accessory,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null">
+        `source` = #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        `type` = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="byNotification != null">
+        by_notification = #{byNotification,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null">
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null">
+        createdate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="atc != null">
+        ATC = #{atc,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="satisfaction != null">
+        satisfaction = #{satisfaction,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluation != null">
+        evaluation = #{evaluation,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="progress != null">
+        progress = #{progress,jdbcType=INTEGER},
+      </if>
+      <if test="dept != null">
+        dept = #{dept,jdbcType=VARCHAR},
+      </if>
+      <if test="auditStatus != null">
+        Audit_status = #{auditStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="auditdate != null">
+        Auditdate = #{auditdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="auditOpinion != null">
+        Audit_opinion = #{auditOpinion,jdbcType=VARCHAR},
+      </if>
+      <if test="auditor != null">
+        auditor = #{auditor,jdbcType=VARCHAR},
+      </if>
+      <if test="disc != null">
+        disc = #{disc,jdbcType=VARCHAR},
+      </if>
+      <if test="startdate != null">
+        startdate = #{startdate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.com.busi.domain.TTask">
+    <!--@mbg.generated-->
+    update t_task
+    set `name` = #{name,jdbcType=VARCHAR},
+      nominator = #{nominator,jdbcType=VARCHAR},
+      assigned_to = #{assignedTo,jdbcType=VARCHAR},
+      deadline = #{deadline,jdbcType=TIMESTAMP},
+      copy_to = #{copyTo,jdbcType=VARCHAR},
+      content = #{content,jdbcType=LONGVARCHAR},
+      accessory = #{accessory,jdbcType=VARCHAR},
+      `source` = #{source,jdbcType=VARCHAR},
+      `type` = #{type,jdbcType=VARCHAR},
+      by_notification = #{byNotification,jdbcType=VARCHAR},
+      creator = #{creator,jdbcType=VARCHAR},
+      createdate = #{createdate,jdbcType=TIMESTAMP},
+      ATC = #{atc,jdbcType=TIMESTAMP},
+      `status` = #{status,jdbcType=VARCHAR},
+      satisfaction = #{satisfaction,jdbcType=VARCHAR},
+      evaluation = #{evaluation,jdbcType=LONGVARCHAR},
+      progress = #{progress,jdbcType=INTEGER},
+      dept = #{dept,jdbcType=VARCHAR},
+      Audit_status = #{auditStatus,jdbcType=VARCHAR},
+      Auditdate = #{auditdate,jdbcType=TIMESTAMP},
+      Audit_opinion = #{auditOpinion,jdbcType=VARCHAR},
+      auditor = #{auditor,jdbcType=VARCHAR},
+      disc = #{disc,jdbcType=VARCHAR},
+      startdate = #{startdate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+
+<select id="findByAll" resultMap="taskSubtaskListMap">
+    select
+    t.id, t.`name`, t.nominator, t.assigned_to, t.deadline, t.copy_to, t.content, t.accessory, t.`source`,
+    t.`type`, t.by_notification, t.creator, t.createdate, t.ATC, t.`status`, t.satisfaction, t.evaluation,
+    t.progress, t.dept, t.Audit_status, t.Auditdate, t.Audit_opinion, t.auditor,t.disc,t.startdate,
+    d.`name` Dept_name,s.id Subtask_id, s.`name` Subtask_name, s.principal Subtask_principal,
+    s.setRecipient Subtask_setRecipient, s.deadline Subtask_deadline, s.weight Subtask_weight, s.proportion Subtask_proportion,
+    s.tid Subtask_tid, s.`status` Subtask_status,  s.progress Subtask_progress,s.startdate Subtask_startdate
+    from t_task t
+    inner join t_dept d on t.dept=d.id
+    left join t_subtask s on t.id = s.tid
+    <where>
+        <if test="stutas == null">
+         (Disc = "1" or (disc = "0"  and t.dept = #{deptId,jdbcType=VARCHAR}))
+        </if>
+        <if test="tTask.id != null">
+         and t.id=#{tTask.id,jdbcType=VARCHAR}</if>
+        <if test="tTask.name != null">
+         and t.`name`=#{tTask.name,jdbcType=VARCHAR}</if>
+        <if test="tTask.nominator != null">
+         and t.nominator=#{tTask.nominator,jdbcType=VARCHAR}</if>
+        <if test="tTask.assignedTo != null">
+         and t.assigned_to like concat('%',#{tTask.assignedTo,jdbcType=VARCHAR},'%')</if>
+        <if test="tTask.deadline != null">
+         and t.deadline=#{tTask.deadline,jdbcType=TIMESTAMP}</if>
+         <if test="tTask.startdate != null">
+         and t.startdate=#{tTask.startdate,jdbcType=TIMESTAMP}</if>
+        <if test="tTask.copyTo != null">
+         and t.copy_to=#{tTask.copyTo,jdbcType=VARCHAR}</if>
+        <if test="tTask.content != null">
+         and t.content=#{tTask.content,jdbcType=LONGVARCHAR}</if>
+        <if test="tTask.accessory != null">
+         and t.accessory=#{tTask.accessory,jdbcType=VARCHAR}</if>
+        <if test="tTask.source != null">
+         and t.`source`=#{tTask.source,jdbcType=VARCHAR}</if>
+        <if test="tTask.type != null">
+         and t.`type`=#{tTask.type,jdbcType=VARCHAR}</if>
+        <if test="tTask.byNotification != null">
+         and t.by_notification=#{tTask.byNotification,jdbcType=VARCHAR}</if>
+        <if test="tTask.creator != null">
+         and t.creator=#{tTask.creator,jdbcType=VARCHAR}</if>
+        <if test="tTask.createdate != null">
+         and t.createdate=#{tTask.createdate,jdbcType=TIMESTAMP}</if>
+        <if test="tTask.atc != null">
+         and t.ATC=#{tTask.atc,jdbcType=TIMESTAMP}</if>
+        <if test="tTask.status != null">
+         and t.`status`=#{tTask.status,jdbcType=VARCHAR}</if>
+        <if test="tTask.satisfaction != null">
+         and t.satisfaction=#{tTask.satisfaction,jdbcType=VARCHAR}</if>
+        <if test="tTask.evaluation != null">
+         and t.evaluation=#{tTask.evaluation,jdbcType=LONGVARCHAR}</if>
+        <if test="tTask.progress != null">
+         and t.progress=#{tTask.progress,jdbcType=INTEGER}</if>
+        <if test="tTask.dept != null">
+         and t.dept=#{tTask.dept,jdbcType=VARCHAR}</if>
+        <if test="tTask.auditStatus != null">
+         and t.Audit_status in (${tTask.auditStatus})</if>
+        <if test="tTask.auditdate != null">
+         and t.Auditdate=#{tTask.auditdate,jdbcType=TIMESTAMP}</if>
+         <if test="tTask.auditOpinion != null">
+         and t.Audit_opinion=#{tTask.auditOpinion,jdbcType=TIMESTAMP}</if>
+         <if test="tTask.auditor != null">
+         and t.auditor=#{tTask.auditor,jdbcType=TIMESTAMP}</if>
+         <if test="timeStart != null">
+         and TO_DAYS(t.deadline) &gt;= TO_DAYS(#{timeStart,jdbcType=DATE})</if>
+         <if test="timeEnd != null">
+         and TO_DAYS(t.deadline) &lt;= TO_DAYS(#{timeEnd,jdbcType=DATE})</if>
+         <if test="startsDate != null">
+         and TO_DAYS(t.startdate) &gt;= TO_DAYS(#{startsDate,jdbcType=DATE})</if>
+         <if test="staDate != null">
+         and TO_DAYS(t.startdate) &lt;= TO_DAYS(#{staDate,jdbcType=DATE})</if>
+         <if test="isitoverdue != null">
+         and t.deadline ${isitoverdue} now()</if>
+    </where>
+    order by t.dept
+  </select>
+<select id="countByType" parameterType="java.lang.String" resultType="java.lang.String">
+select `type` from t_task where Audit_status != '0' group by `type`
+</select>
+
+<select id="countByName" parameterType="java.lang.String" resultType="java.lang.String">
+select `name` from t_task where Audit_status != '0' group by `name`
+</select>
+
+</mapper>

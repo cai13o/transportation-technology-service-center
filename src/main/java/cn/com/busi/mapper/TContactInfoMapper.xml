@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.busi.mapper.TContactInfoMapper">
+  <resultMap id="BaseResultMap" type="cn.com.busi.domain.TContactInfo">
+    <!--@mbg.generated-->
+    <!--@Table t_contact_info-->
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="Phone" jdbcType="VARCHAR" property="phone" />
+    <result column="Mail" jdbcType="VARCHAR" property="mail" />
+    <result column="telephone" jdbcType="VARCHAR" property="telephone" />
+    <result column="Contacts" jdbcType="VARCHAR" property="contacts" />
+    <result column="Contactsphone" jdbcType="VARCHAR" property="contactsphone" />
+    <result column="opflag" jdbcType="VARCHAR" property="opflag" />
+    <result column="opdate" jdbcType="TIMESTAMP" property="opdate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, Phone, Mail, telephone, Contacts, Contactsphone, opflag, opdate
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from t_contact_info
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from t_contact_info
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.com.busi.domain.TContactInfo">
+    <!--@mbg.generated-->
+    insert into t_contact_info (id, Phone, Mail, 
+      telephone, Contacts, Contactsphone, 
+      opflag, opdate)
+    values (#{id,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{mail,jdbcType=VARCHAR}, 
+      #{telephone,jdbcType=VARCHAR}, #{contacts,jdbcType=VARCHAR}, #{contactsphone,jdbcType=VARCHAR}, 
+      #{opflag,jdbcType=VARCHAR}, #{opdate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.com.busi.domain.TContactInfo">
+    <!--@mbg.generated-->
+    insert into t_contact_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="phone != null">
+        Phone,
+      </if>
+      <if test="mail != null">
+        Mail,
+      </if>
+      <if test="telephone != null">
+        telephone,
+      </if>
+      <if test="contacts != null">
+        Contacts,
+      </if>
+      <if test="contactsphone != null">
+        Contactsphone,
+      </if>
+      <if test="opflag != null">
+        opflag,
+      </if>
+      <if test="opdate != null">
+        opdate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="mail != null">
+        #{mail,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null">
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="contacts != null">
+        #{contacts,jdbcType=VARCHAR},
+      </if>
+      <if test="contactsphone != null">
+        #{contactsphone,jdbcType=VARCHAR},
+      </if>
+      <if test="opflag != null">
+        #{opflag,jdbcType=VARCHAR},
+      </if>
+      <if test="opdate != null">
+        #{opdate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.com.busi.domain.TContactInfo">
+    <!--@mbg.generated-->
+    update t_contact_info
+    <set>
+      <if test="phone != null">
+        Phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="mail != null">
+        Mail = #{mail,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null">
+        telephone = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="contacts != null">
+        Contacts = #{contacts,jdbcType=VARCHAR},
+      </if>
+      <if test="contactsphone != null">
+        Contactsphone = #{contactsphone,jdbcType=VARCHAR},
+      </if>
+      <if test="opflag != null">
+        opflag = #{opflag,jdbcType=VARCHAR},
+      </if>
+      <if test="opdate != null">
+        opdate = #{opdate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.com.busi.domain.TContactInfo">
+    <!--@mbg.generated-->
+    update t_contact_info
+    set Phone = #{phone,jdbcType=VARCHAR},
+      Mail = #{mail,jdbcType=VARCHAR},
+      telephone = #{telephone,jdbcType=VARCHAR},
+      Contacts = #{contacts,jdbcType=VARCHAR},
+      Contactsphone = #{contactsphone,jdbcType=VARCHAR},
+      opflag = #{opflag,jdbcType=VARCHAR},
+      opdate = #{opdate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

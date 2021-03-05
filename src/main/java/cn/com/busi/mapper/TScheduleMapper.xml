@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.busi.mapper.TScheduleMapper">
+  <resultMap id="BaseResultMap" type="cn.com.busi.domain.TSchedule">
+    <!--@mbg.generated-->
+    <!--@Table t_schedule-->
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="context" jdbcType="LONGVARCHAR" property="context" />
+    <result column="time" jdbcType="DATE" property="time" />
+    <result column="startdate" jdbcType="TIMESTAMP" property="startdate" />
+    <result column="enddate" jdbcType="TIMESTAMP" property="enddate" />
+    <result column="owner" jdbcType="VARCHAR" property="owner" />
+    <result column="repeat_types" jdbcType="VARCHAR" property="repeatTypes" />
+    <result column="remind_set" jdbcType="VARCHAR" property="remindSet" />
+    <result column="associated_URL" jdbcType="VARCHAR" property="associatedUrl" />
+    <result column="site" jdbcType="VARCHAR" property="site" />
+    <result column="activities" jdbcType="VARCHAR" property="activities" />
+    <result column="reader" jdbcType="VARCHAR" property="reader" />
+    <result column="editors" jdbcType="VARCHAR" property="editors" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="content" jdbcType="LONGVARCHAR" property="content" />
+    <result column="accessory" jdbcType="VARCHAR" property="accessory" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="eid" jdbcType="VARCHAR" property="eid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, context, `time`, startdate, enddate, `owner`, repeat_types, remind_set, associated_URL, 
+    site, activities, reader, editors, title, content, accessory, `status`, eid
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from t_schedule
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from t_schedule
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.com.busi.domain.TSchedule">
+    <!--@mbg.generated-->
+    insert into t_schedule (id, context, `time`, 
+      startdate, enddate, `owner`, 
+      repeat_types, remind_set, associated_URL, 
+      site, activities, reader, 
+      editors, title, content, 
+      accessory, `status`, eid
+      )
+    values (#{id,jdbcType=VARCHAR}, #{context,jdbcType=LONGVARCHAR}, #{time,jdbcType=DATE}, 
+      #{startdate,jdbcType=TIMESTAMP}, #{enddate,jdbcType=TIMESTAMP}, #{owner,jdbcType=VARCHAR}, 
+      #{repeatTypes,jdbcType=VARCHAR}, #{remindSet,jdbcType=VARCHAR}, #{associatedUrl,jdbcType=VARCHAR}, 
+      #{site,jdbcType=VARCHAR}, #{activities,jdbcType=VARCHAR}, #{reader,jdbcType=VARCHAR}, 
+      #{editors,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{content,jdbcType=LONGVARCHAR}, 
+      #{accessory,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{eid,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.com.busi.domain.TSchedule">
+    <!--@mbg.generated-->
+    insert into t_schedule
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="context != null">
+        context,
+      </if>
+      <if test="time != null">
+        `time`,
+      </if>
+      <if test="startdate != null">
+        startdate,
+      </if>
+      <if test="enddate != null">
+        enddate,
+      </if>
+      <if test="owner != null">
+        `owner`,
+      </if>
+      <if test="repeatTypes != null">
+        repeat_types,
+      </if>
+      <if test="remindSet != null">
+        remind_set,
+      </if>
+      <if test="associatedUrl != null">
+        associated_URL,
+      </if>
+      <if test="site != null">
+        site,
+      </if>
+      <if test="activities != null">
+        activities,
+      </if>
+      <if test="reader != null">
+        reader,
+      </if>
+      <if test="editors != null">
+        editors,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="accessory != null">
+        accessory,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="eid != null">
+        eid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="context != null">
+        #{context,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=DATE},
+      </if>
+      <if test="startdate != null">
+        #{startdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="enddate != null">
+        #{enddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="owner != null">
+        #{owner,jdbcType=VARCHAR},
+      </if>
+      <if test="repeatTypes != null">
+        #{repeatTypes,jdbcType=VARCHAR},
+      </if>
+      <if test="remindSet != null">
+        #{remindSet,jdbcType=VARCHAR},
+      </if>
+      <if test="associatedUrl != null">
+        #{associatedUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="site != null">
+        #{site,jdbcType=VARCHAR},
+      </if>
+      <if test="activities != null">
+        #{activities,jdbcType=VARCHAR},
+      </if>
+      <if test="reader != null">
+        #{reader,jdbcType=VARCHAR},
+      </if>
+      <if test="editors != null">
+        #{editors,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="accessory != null">
+        #{accessory,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="eid != null">
+        #{eid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.com.busi.domain.TSchedule">
+    <!--@mbg.generated-->
+    update t_schedule
+    <set>
+      <if test="context != null">
+        context = #{context,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="time != null">
+        `time` = #{time,jdbcType=DATE},
+      </if>
+      <if test="startdate != null">
+        startdate = #{startdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="enddate != null">
+        enddate = #{enddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="owner != null">
+        `owner` = #{owner,jdbcType=VARCHAR},
+      </if>
+      <if test="repeatTypes != null">
+        repeat_types = #{repeatTypes,jdbcType=VARCHAR},
+      </if>
+      <if test="remindSet != null">
+        remind_set = #{remindSet,jdbcType=VARCHAR},
+      </if>
+      <if test="associatedUrl != null">
+        associated_URL = #{associatedUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="site != null">
+        site = #{site,jdbcType=VARCHAR},
+      </if>
+      <if test="activities != null">
+        activities = #{activities,jdbcType=VARCHAR},
+      </if>
+      <if test="reader != null">
+        reader = #{reader,jdbcType=VARCHAR},
+      </if>
+      <if test="editors != null">
+        editors = #{editors,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="accessory != null">
+        accessory = #{accessory,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="eid != null">
+        eid = #{eid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.com.busi.domain.TSchedule">
+    <!--@mbg.generated-->
+    update t_schedule
+    set context = #{context,jdbcType=LONGVARCHAR},
+      `time` = #{time,jdbcType=DATE},
+      startdate = #{startdate,jdbcType=TIMESTAMP},
+      enddate = #{enddate,jdbcType=TIMESTAMP},
+      `owner` = #{owner,jdbcType=VARCHAR},
+      repeat_types = #{repeatTypes,jdbcType=VARCHAR},
+      remind_set = #{remindSet,jdbcType=VARCHAR},
+      associated_URL = #{associatedUrl,jdbcType=VARCHAR},
+      site = #{site,jdbcType=VARCHAR},
+      activities = #{activities,jdbcType=VARCHAR},
+      reader = #{reader,jdbcType=VARCHAR},
+      editors = #{editors,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      content = #{content,jdbcType=LONGVARCHAR},
+      accessory = #{accessory,jdbcType=VARCHAR},
+      `status` = #{status,jdbcType=VARCHAR},
+      eid = #{eid,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+<!--auto generated by MybatisCodeHelper on 2020-12-24-->
+  <select id="findByAll" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" />
+    from t_schedule
+    <where>
+        <if test="tSchedule.id != null">
+         and id=#{tSchedule.id,jdbcType=VARCHAR}</if>
+        <if test="tSchedule.context != null">
+         and context=#{tSchedule.context,jdbcType=LONGVARCHAR}</if>
+        <if test="tSchedule.time != null">
+         and `time`=#{tSchedule.time,jdbcType=DATE}</if>
+        <if test="tSchedule.startdate != null">
+         and startdate=#{tSchedule.startdate,jdbcType=TIMESTAMP}</if>
+        <if test="tSchedule.enddate != null">
+         and enddate=#{tSchedule.enddate,jdbcType=TIMESTAMP}</if>
+        <if test="tSchedule.owner != null">
+         and `owner`=#{tSchedule.owner,jdbcType=VARCHAR}</if>
+        <if test="tSchedule.repeatTypes != null">
+         and repeat_types=#{tSchedule.repeatTypes,jdbcType=VARCHAR}</if>
+        <if test="tSchedule.remindSet != null">
+         and remind_set=#{tSchedule.remindSet,jdbcType=VARCHAR}</if>
+        <if test="tSchedule.associatedUrl != null">
+         and associated_URL=#{tSchedule.associatedUrl,jdbcType=VARCHAR}</if>
+        <if test="tSchedule.site != null">
+         and site=#{tSchedule.site,jdbcType=VARCHAR}</if>
+        <if test="tSchedule.activities != null">
+         and activities=#{tSchedule.activities,jdbcType=VARCHAR}</if>
+        <if test="tSchedule.reader != null">
+         and reader=#{tSchedule.reader,jdbcType=VARCHAR}</if>
+        <if test="tSchedule.editors != null">
+         and editors=#{tSchedule.editors,jdbcType=VARCHAR}</if>
+        <if test="tSchedule.title != null">
+         and title=#{tSchedule.title,jdbcType=VARCHAR}</if>
+        <if test="tSchedule.content != null">
+         and content=#{tSchedule.content,jdbcType=LONGVARCHAR}</if>
+        <if test="tSchedule.accessory != null">
+         and accessory=#{tSchedule.accessory,jdbcType=VARCHAR}</if>
+         <if test="tSchedule.eid != null">
+         and eid=#{tSchedule.eid,jdbcType=VARCHAR}</if>
+         <if test="tSchedule.status != null">
+         and status=#{tSchedule.status,jdbcType=VARCHAR}</if>
+
+    </where>
+    order by time ${by}
+  </select>
+</mapper>

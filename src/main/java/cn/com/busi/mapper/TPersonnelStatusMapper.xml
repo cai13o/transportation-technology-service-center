@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.busi.mapper.TPersonnelStatusMapper">
+  <resultMap id="BaseResultMap" type="cn.com.busi.domain.TPersonnelStatus">
+    <!--@mbg.generated-->
+    <!--@Table t_personnel_status-->
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="Traff_State" jdbcType="VARCHAR" property="traffState" />
+    <result column="Category" jdbcType="VARCHAR" property="category" />
+    <result column="Job_nature" jdbcType="VARCHAR" property="jobNature" />
+    <result column="boarddate" jdbcType="DATE" property="boarddate" />
+    <result column="Term" jdbcType="VARCHAR" property="term" />
+    <result column="Positive_date" jdbcType="DATE" property="positiveDate" />
+    <result column="Trial_period" jdbcType="VARCHAR" property="trialPeriod" />
+    <result column="Trialenddate" jdbcType="DATE" property="trialenddate" />
+    <result column="opflag" jdbcType="VARCHAR" property="opflag" />
+    <result column="opdate" jdbcType="TIMESTAMP" property="opdate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, Traff_State, Category, Job_nature, boarddate, Term, Positive_date, Trial_period, 
+    Trialenddate, opflag, opdate
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from t_personnel_status
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from t_personnel_status
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.com.busi.domain.TPersonnelStatus">
+    <!--@mbg.generated-->
+    insert into t_personnel_status (id, Traff_State, Category, 
+      Job_nature, boarddate, Term, 
+      Positive_date, Trial_period, Trialenddate, 
+      opflag, opdate)
+    values (#{id,jdbcType=VARCHAR}, #{traffState,jdbcType=VARCHAR}, #{category,jdbcType=VARCHAR}, 
+      #{jobNature,jdbcType=VARCHAR}, #{boarddate,jdbcType=DATE}, #{term,jdbcType=VARCHAR}, 
+      #{positiveDate,jdbcType=DATE}, #{trialPeriod,jdbcType=VARCHAR}, #{trialenddate,jdbcType=DATE}, 
+      #{opflag,jdbcType=VARCHAR}, #{opdate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.com.busi.domain.TPersonnelStatus">
+    <!--@mbg.generated-->
+    insert into t_personnel_status
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="traffState != null">
+        Traff_State,
+      </if>
+      <if test="category != null">
+        Category,
+      </if>
+      <if test="jobNature != null">
+        Job_nature,
+      </if>
+      <if test="boarddate != null">
+        boarddate,
+      </if>
+      <if test="term != null">
+        Term,
+      </if>
+      <if test="positiveDate != null">
+        Positive_date,
+      </if>
+      <if test="trialPeriod != null">
+        Trial_period,
+      </if>
+      <if test="trialenddate != null">
+        Trialenddate,
+      </if>
+      <if test="opflag != null">
+        opflag,
+      </if>
+      <if test="opdate != null">
+        opdate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="traffState != null">
+        #{traffState,jdbcType=VARCHAR},
+      </if>
+      <if test="category != null">
+        #{category,jdbcType=VARCHAR},
+      </if>
+      <if test="jobNature != null">
+        #{jobNature,jdbcType=VARCHAR},
+      </if>
+      <if test="boarddate != null">
+        #{boarddate,jdbcType=DATE},
+      </if>
+      <if test="term != null">
+        #{term,jdbcType=VARCHAR},
+      </if>
+      <if test="positiveDate != null">
+        #{positiveDate,jdbcType=DATE},
+      </if>
+      <if test="trialPeriod != null">
+        #{trialPeriod,jdbcType=VARCHAR},
+      </if>
+      <if test="trialenddate != null">
+        #{trialenddate,jdbcType=DATE},
+      </if>
+      <if test="opflag != null">
+        #{opflag,jdbcType=VARCHAR},
+      </if>
+      <if test="opdate != null">
+        #{opdate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.com.busi.domain.TPersonnelStatus">
+    <!--@mbg.generated-->
+    update t_personnel_status
+    <set>
+      <if test="traffState != null">
+        Traff_State = #{traffState,jdbcType=VARCHAR},
+      </if>
+      <if test="category != null">
+        Category = #{category,jdbcType=VARCHAR},
+      </if>
+      <if test="jobNature != null">
+        Job_nature = #{jobNature,jdbcType=VARCHAR},
+      </if>
+      <if test="boarddate != null">
+        boarddate = #{boarddate,jdbcType=DATE},
+      </if>
+      <if test="term != null">
+        Term = #{term,jdbcType=VARCHAR},
+      </if>
+      <if test="positiveDate != null">
+        Positive_date = #{positiveDate,jdbcType=DATE},
+      </if>
+      <if test="trialPeriod != null">
+        Trial_period = #{trialPeriod,jdbcType=VARCHAR},
+      </if>
+      <if test="trialenddate != null">
+        Trialenddate = #{trialenddate,jdbcType=DATE},
+      </if>
+      <if test="opflag != null">
+        opflag = #{opflag,jdbcType=VARCHAR},
+      </if>
+      <if test="opdate != null">
+        opdate = #{opdate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.com.busi.domain.TPersonnelStatus">
+    <!--@mbg.generated-->
+    update t_personnel_status
+    set Traff_State = #{traffState,jdbcType=VARCHAR},
+      Category = #{category,jdbcType=VARCHAR},
+      Job_nature = #{jobNature,jdbcType=VARCHAR},
+      boarddate = #{boarddate,jdbcType=DATE},
+      Term = #{term,jdbcType=VARCHAR},
+      Positive_date = #{positiveDate,jdbcType=DATE},
+      Trial_period = #{trialPeriod,jdbcType=VARCHAR},
+      Trialenddate = #{trialenddate,jdbcType=DATE},
+      opflag = #{opflag,jdbcType=VARCHAR},
+      opdate = #{opdate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

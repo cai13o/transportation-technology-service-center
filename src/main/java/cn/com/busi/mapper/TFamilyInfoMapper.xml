@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.busi.mapper.TFamilyInfoMapper">
+  <resultMap id="BaseResultMap" type="cn.com.busi.domain.TFamilyInfo">
+    <!--@mbg.generated-->
+    <!--@Table t_family_info-->
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="eid" jdbcType="VARCHAR" property="eid" />
+    <result column="relation" jdbcType="VARCHAR" property="relation" />
+    <result column="Name" jdbcType="VARCHAR" property="name" />
+    <result column="unit" jdbcType="VARCHAR" property="unit" />
+    <result column="profession" jdbcType="VARCHAR" property="profession" />
+    <result column="Phone" jdbcType="VARCHAR" property="phone" />
+    <result column="Mark" jdbcType="VARCHAR" property="mark" />
+    <result column="opflag" jdbcType="VARCHAR" property="opflag" />
+    <result column="opdate" jdbcType="TIMESTAMP" property="opdate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, eid, relation, `Name`, unit, profession, Phone, Mark, opflag, opdate
+  </sql>
+  <insert id="insert" parameterType="cn.com.busi.domain.TFamilyInfo">
+    <!--@mbg.generated-->
+    insert into t_family_info (id, eid, relation, 
+      `Name`, unit, profession, 
+      Phone, Mark, opflag, 
+      opdate)
+    values (#{id,jdbcType=INTEGER}, #{eid,jdbcType=VARCHAR}, #{relation,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{unit,jdbcType=VARCHAR}, #{profession,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR}, #{mark,jdbcType=VARCHAR}, #{opflag,jdbcType=VARCHAR}, 
+      #{opdate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.com.busi.domain.TFamilyInfo">
+    <!--@mbg.generated-->
+    insert into t_family_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="eid != null">
+        eid,
+      </if>
+      <if test="relation != null">
+        relation,
+      </if>
+      <if test="name != null">
+        `Name`,
+      </if>
+      <if test="unit != null">
+        unit,
+      </if>
+      <if test="profession != null">
+        profession,
+      </if>
+      <if test="phone != null">
+        Phone,
+      </if>
+      <if test="mark != null">
+        Mark,
+      </if>
+      <if test="opflag != null">
+        opflag,
+      </if>
+      <if test="opdate != null">
+        opdate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="eid != null">
+        #{eid,jdbcType=VARCHAR},
+      </if>
+      <if test="relation != null">
+        #{relation,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="unit != null">
+        #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="profession != null">
+        #{profession,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="mark != null">
+        #{mark,jdbcType=VARCHAR},
+      </if>
+      <if test="opflag != null">
+        #{opflag,jdbcType=VARCHAR},
+      </if>
+      <if test="opdate != null">
+        #{opdate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+</mapper>
